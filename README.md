@@ -1,2 +1,2 @@
-# polybot_service
+# Polybot_Yolo5
 Telegram bot
