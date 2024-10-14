@@ -9,6 +9,7 @@ app = flask.Flask(__name__)
 REGION_NAME = os.environ['REGION_NAME']
 DYNAMODB_TABLE = os.environ['DYNAMODB_TABLE']
 SECRET_ID = os.environ['SECRET_ID']
+ENV = os.environ['ENV']
 
 # loads TELEGRAM_TOKEN value from Secret Manager
 secretsmanager = boto3.client('secretsmanager', region_name=REGION_NAME)
@@ -27,7 +28,7 @@ def index():
     return 'Ok'
 
 
-@app.route(f'/{TELEGRAM_TOKEN}/', methods=['POST'])
+@app.route(f'/{ENV}/{TELEGRAM_TOKEN}/', methods=['POST'])
 def webhook():
     req = request.get_json()
     bot.handle_message(req['message'])
