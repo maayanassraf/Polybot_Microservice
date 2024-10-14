@@ -9,6 +9,7 @@ from telebot.types import InputFile
 images_bucket = os.environ['BUCKET_NAME']
 queue_name = os.environ['SQS_QUEUE_NAME']
 REGION_NAME = os.environ['REGION_NAME']
+ENV = os.environ['ENV']
 
 class Bot:
 
@@ -26,7 +27,7 @@ class Bot:
         # secret_cert = response['SecretString']
 
         # sets the webhook URL
-        self.telegram_bot_client.set_webhook(url=f'{telegram_chat_url}/{token}/', timeout=60)
+        self.telegram_bot_client.set_webhook(url=f'{telegram_chat_url}/{ENV}/{token}/', timeout=60)
 
         logger.info(f'Telegram Bot information\n\n{self.telegram_bot_client.get_me()}')
 
