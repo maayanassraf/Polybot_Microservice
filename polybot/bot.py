@@ -21,10 +21,6 @@ class Bot:
         # removes any existing webhooks configured in Telegram servers
         self.telegram_bot_client.remove_webhook()
         time.sleep(0.5)
-        # retrieve the certificate from secretsmanager
-        # secretsmanager = boto3.client('secretsmanager', region_name=REGION_NAME)
-        # response = secretsmanager.get_secret_value(SecretId='public_key_cert')
-        # secret_cert = response['SecretString']
 
         # sets the webhook URL
         self.telegram_bot_client.set_webhook(url=f'{telegram_chat_url}/{ENV}/{token}/', timeout=60)
@@ -107,4 +103,3 @@ class ObjectDetectionBot(Bot):
             except:
                 logger.error('An error occurred while trying to send message to queue')
                 self.send_text((msg['chat']['id']), text=f'Something went wrong. Please try again...')
-                # note for check
