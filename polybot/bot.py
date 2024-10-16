@@ -21,6 +21,7 @@ class Bot:
         # removes any existing webhooks configured in Telegram servers
         self.telegram_bot_client.remove_webhook()
         time.sleep(0.5)
+        #123
 
         # sets the webhook URL
         self.telegram_bot_client.set_webhook(url=f'{telegram_chat_url}/{ENV}/{token}/', timeout=60)
