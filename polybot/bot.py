@@ -103,4 +103,3 @@ class ObjectDetectionBot(Bot):
             except:
                 logger.error('An error occurred while trying to send message to queue')
                 self.send_text((msg['chat']['id']), text=f'Something went wrong. Please try again...')
-                # note for check
